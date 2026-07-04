@@ -4,8 +4,11 @@ import {
     getFirestore,
     doc,
     setDoc,
-    getDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    getDoc,
+    collection,
+    getDocs,
+    deleteDoc
+}
 
 const firebaseConfig = {
   apiKey: "AIzaSyAI-a4ORQan_jb2q0xKLs1wcr7cM5W10lM",
@@ -21,6 +24,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 let plantillaOriginal = [];
+let casoActual = null;
 
 function capturarPlantillaOriginal() {
 
@@ -40,6 +44,15 @@ function capturarPlantillaOriginal() {
 
 window.guardarCaso = async function () {
 
+    if (!casoActual) {
+
+        alert(
+            "Primero cree un nuevo caso"
+        );
+
+        return;
+    }
+
     const datos = [];
 
     document
@@ -51,14 +64,22 @@ window.guardarCaso = async function () {
         });
 
     await setDoc(
-        doc(db, "casos", "caso_actual"),
+        doc(
+            db,
+            "casos",
+            casoActual
+        ),
         {
+            nombre: casoActual,
             contenido: datos,
             fecha: Date.now()
         }
     );
 
+    await cargarListaCasos();
+
     alert("Caso guardado");
+
 };
 
 async function cargarCaso() {
