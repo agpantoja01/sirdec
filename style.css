@@ -12,6 +12,6 @@ body {
 .editable {
     border: 1px solid #ccc;
     min-height: 120px;
-    padding: 10px;
+    line-height: 1.2;
     white-space: pre-wrap;
 }
