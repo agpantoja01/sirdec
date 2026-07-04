@@ -8,9 +8,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
-
-    PEGA_AQUI_TU_CONFIG
-
+  apiKey: "AIzaSyAI-a4ORQan_jb2q0xKLs1wcr7cM5W10lM",
+  authDomain: "sirdec-assistant.firebaseapp.com",
+  projectId: "sirdec-assistant",
+  storageBucket: "sirdec-assistant.firebasestorage.app",
+  messagingSenderId: "634020647135",
+  appId: "1:634020647135:web:b331c05b5f60824492596a"
 };
 
 const app = initializeApp(firebaseConfig);
