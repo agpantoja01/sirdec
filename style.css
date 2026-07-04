@@ -1,0 +1,17 @@
+body {
+    font-family: Arial;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.toolbar {
+    margin-bottom: 20px;
+}
+
+.editable {
+    border: 1px solid #ccc;
+    min-height: 120px;
+    padding: 10px;
+    white-space: pre-wrap;
+}
