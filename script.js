@@ -8,7 +8,7 @@ import {
     collection,
     getDocs,
     deleteDoc
-}
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAI-a4ORQan_jb2q0xKLs1wcr7cM5W10lM",
@@ -82,34 +82,28 @@ window.guardarCaso = async function () {
 
 };
 
-async function cargarCaso() {
+window.nuevoCaso = function () {
 
-    const documento =
-        await getDoc(
-            doc(db, "casos", "caso_actual")
-        );
+    const numeroCaso =
+        prompt("Número del caso");
 
-    if (!documento.exists()) return;
+    if (!numeroCaso) return;
 
-    const datos =
-        documento.data().contenido;
+    casoActual = numeroCaso;
 
     document
         .querySelectorAll(".editable")
         .forEach((div, i) => {
 
             div.innerHTML =
-                datos[i] || "";
+                plantillaOriginal[i];
 
         });
 
-}
+};
 
-window.restablecerCaso = async function () {
 
-    window.nuevoCaso = function () {
-
-        async function cargarListaCasos() {
+async function cargarListaCasos() {
 
     const lista =
         document.getElementById(
@@ -147,25 +141,8 @@ window.restablecerCaso = async function () {
 
 }
 
-    const numeroCaso =
-        prompt(
-            "Número del caso"
-        );
 
-    if (!numeroCaso) return;
-
-    casoActual = numeroCaso;
-
-    document
-        .querySelectorAll(".editable")
-        .forEach((div, i) => {
-
-            div.innerHTML =
-                plantillaOriginal[i];
-
-        });
-
-};
+window.restablecerCaso = async function () {
 
     const confirmar =
         confirm(
@@ -183,13 +160,71 @@ window.restablecerCaso = async function () {
 
         });
 
-    await setDoc(
-        doc(db, "casos", "caso_actual"),
-        {
-            contenido: plantillaOriginal,
-            fecha: Date.now()
-        }
+};
+
+window.abrirCaso = async function () {
+
+    const id =
+        document.getElementById(
+            "listaCasos"
+        ).value;
+
+    if (!id) return;
+
+    const documento =
+        await getDoc(
+            doc(
+                db,
+                "casos",
+                id
+            )
+        );
+
+    if (!documento.exists())
+        return;
+
+    casoActual = id;
+
+    const datos =
+        documento.data().contenido;
+
+    document
+        .querySelectorAll(".editable")
+        .forEach((div, i) => {
+
+            div.innerHTML =
+                datos[i] || "";
+
+        });
+
+};
+
+window.eliminarCaso = async function () {
+
+    const id =
+        document.getElementById(
+            "listaCasos"
+        ).value;
+
+    if (!id) return;
+
+    const confirmar =
+        confirm(
+            "¿Eliminar caso?"
+        );
+
+    if (!confirmar)
+        return;
+
+    await deleteDoc(
+        doc(
+            db,
+            "casos",
+            id
+        )
     );
+
+    await cargarListaCasos();
 
 };
 
@@ -197,6 +232,6 @@ window.onload = async () => {
 
     capturarPlantillaOriginal();
 
-    await cargarCaso();
+    await cargarListaCasos();
 
 };
