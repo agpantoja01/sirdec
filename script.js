@@ -107,6 +107,66 @@ async function cargarCaso() {
 
 window.restablecerCaso = async function () {
 
+    window.nuevoCaso = function () {
+
+        async function cargarListaCasos() {
+
+    const lista =
+        document.getElementById(
+            "listaCasos"
+        );
+
+    lista.innerHTML = "";
+
+    const snapshot =
+        await getDocs(
+            collection(
+                db,
+                "casos"
+            )
+        );
+
+    snapshot.forEach(docu => {
+
+        const opcion =
+            document.createElement(
+                "option"
+            );
+
+        opcion.value =
+            docu.id;
+
+        opcion.textContent =
+            docu.id;
+
+        lista.appendChild(
+            opcion
+        );
+
+    });
+
+}
+
+    const numeroCaso =
+        prompt(
+            "Número del caso"
+        );
+
+    if (!numeroCaso) return;
+
+    casoActual = numeroCaso;
+
+    document
+        .querySelectorAll(".editable")
+        .forEach((div, i) => {
+
+            div.innerHTML =
+                plantillaOriginal[i];
+
+        });
+
+};
+
     const confirmar =
         confirm(
             "¿Crear un nuevo caso?"
