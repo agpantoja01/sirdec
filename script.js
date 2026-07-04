@@ -1,57 +1,118 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-function guardarCaso() {
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-    const editables = document.querySelectorAll(".editable");
+const firebaseConfig = {
+
+    PEGA_AQUI_TU_CONFIG
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+let plantillaOriginal = [];
+
+function capturarPlantillaOriginal() {
+
+    plantillaOriginal = [];
+
+    document
+        .querySelectorAll(".editable")
+        .forEach(div => {
+
+            plantillaOriginal.push(
+                div.innerHTML
+            );
+
+        });
+
+}
+
+window.guardarCaso = async function () {
 
     const datos = [];
 
-    editables.forEach(div => {
-        datos.push(div.innerHTML);
-    });
+    document
+        .querySelectorAll(".editable")
+        .forEach(div => {
 
-    localStorage.setItem("sirdecCaso", JSON.stringify(datos));
+            datos.push(div.innerHTML);
+
+        });
+
+    await setDoc(
+        doc(db, "casos", "caso_actual"),
+        {
+            contenido: datos,
+            fecha: Date.now()
+        }
+    );
 
     alert("Caso guardado");
+};
+
+async function cargarCaso() {
+
+    const documento =
+        await getDoc(
+            doc(db, "casos", "caso_actual")
+        );
+
+    if (!documento.exists()) return;
+
+    const datos =
+        documento.data().contenido;
+
+    document
+        .querySelectorAll(".editable")
+        .forEach((div, i) => {
+
+            div.innerHTML =
+                datos[i] || "";
+
+        });
+
 }
 
-function restablecerCaso() {
+window.restablecerCaso = async function () {
 
-    const confirmar = confirm(
-        "¿Deseas borrar el caso actual y volver a la plantilla original?"
-    );
+    const confirmar =
+        confirm(
+            "¿Crear un nuevo caso?"
+        );
 
     if (!confirmar) return;
 
-    localStorage.removeItem("sirdecCaso");
+    document
+        .querySelectorAll(".editable")
+        .forEach((div, i) => {
 
-    location.reload();
-}
+            div.innerHTML =
+                plantillaOriginal[i];
 
-function cargarCaso() {
+        });
 
-    const datos = JSON.parse(localStorage.getItem("sirdecCaso"));
+    await setDoc(
+        doc(db, "casos", "caso_actual"),
+        {
+            contenido: plantillaOriginal,
+            fecha: Date.now()
+        }
+    );
 
-    if (!datos) return;
+};
 
-    document.querySelectorAll(".editable").forEach((div, i) => {
-        div.innerHTML = datos[i] || "";
-    });
-}
+window.onload = async () => {
 
-window.onload = cargarCaso;
+    capturarPlantillaOriginal();
 
-function exportarWord(){
- const contenido='<!DOCTYPE html>'+document.documentElement.outerHTML;
- const blob=new Blob([contenido],{type:'application/msword'});
- const a=document.createElement('a');
- a.href=URL.createObjectURL(blob);
- a.download='Informe_Necropsia.doc';
- a.click();
-}
+    await cargarCaso();
 
-function exportarPDF(){
- window.print();
-}
-
-setInterval(guardar,30000);
-cargar();
+};
