@@ -14,6 +14,19 @@ function guardarCaso() {
     alert("Caso guardado");
 }
 
+function restablecerCaso() {
+
+    const confirmar = confirm(
+        "¿Deseas borrar el caso actual y volver a la plantilla original?"
+    );
+
+    if (!confirmar) return;
+
+    localStorage.removeItem("sirdecCaso");
+
+    location.reload();
+}
+
 function cargarCaso() {
 
     const datos = JSON.parse(localStorage.getItem("sirdecCaso"));
