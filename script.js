@@ -33,6 +33,27 @@ const db = getFirestore(app);
 
 let plantillaOriginal = [];
 let casoActual = null;
+function aplicarColorCaso(numeroCaso){
+
+    let hash = 0;
+
+    for(let i = 0; i < numeroCaso.length; i++){
+
+        hash =
+            numeroCaso.charCodeAt(i)
+            + ((hash << 5) - hash);
+
+    }
+
+    const color =
+        `hsl(${Math.abs(hash) % 360}, 70%, 50%)`;
+
+    document.documentElement.style.setProperty(
+        "--color-caso",
+        color
+    );
+
+}
 
 function capturarPlantillaOriginal() {
 
