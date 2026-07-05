@@ -119,6 +119,7 @@ window.nuevoCaso = function () {
     if (!numeroCaso) return;
 
     casoActual = numeroCaso;
+    aplicarColorCaso(numeroCaso);
     document.getElementById("casoActivo").textContent =
     "Caso: " + numeroCaso;
 
