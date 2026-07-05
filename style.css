@@ -34,3 +34,12 @@ body {
 
     color: #444;
 }
+#casoActivo{
+
+    margin-left: 20px;
+
+    font-weight: bold;
+
+    color: var(--color-caso);
+
+}
