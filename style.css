@@ -20,3 +20,10 @@ body {
     line-height: 1.2;
     white-space: pre-wrap;
 }
+#casoActivo{
+    margin-left: 20px;
+
+    font-weight: bold;
+
+    color: #444;
+}
