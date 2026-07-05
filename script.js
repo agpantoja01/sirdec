@@ -202,6 +202,9 @@ window.abrirCaso = async function () {
 
             div.innerHTML =
                 datos[i] || "";
+   
+    document.getElementById("casoActivo").textContent =
+    "Caso: " + numeroCaso;
 
         });
 
