@@ -24,8 +24,11 @@ body {
 .editable {
     border: 1px solid #ccc;
     min-height: 120px;
-    line-height: 1.2;
+    line-height: 1.1;
     white-space: pre-wrap;
+
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 #casoActivo{
     margin-left: 20px;
@@ -42,4 +45,9 @@ body {
 
     color: var(--color-caso);
 
+}
+.editable p,
+.editable div {
+    margin-top: 0;
+    margin-bottom: 0;
 }
