@@ -35,24 +35,41 @@ let plantillaOriginal = [];
 let casoActual = null;
 function aplicarColorCaso(numeroCaso){
 
+    const colores = [
+        "#E53935", // rojo
+        "#1E88E5", // azul
+        "#43A047", // verde
+        "#FB8C00", // naranja
+        "#8E24AA", // morado
+        "#00897B", // turquesa
+        "#6D4C41", // café
+        "#3949AB", // índigo
+        "#C2185B", // fucsia
+        "#7CB342", // lima
+        "#F4511E", // naranja oscuro
+        "#546E7A"  // gris azulado
+    ];
+
     let hash = 0;
 
     for(let i = 0; i < numeroCaso.length; i++){
-
         hash =
-            numeroCaso.charCodeAt(i)
-            + ((hash << 5) - hash);
+            ((hash << 5) - hash)
+            + numeroCaso.charCodeAt(i);
 
+        hash |= 0;
     }
 
+    const indice =
+        Math.abs(hash) % colores.length;
+
     const color =
-        `hsl(${Math.abs(hash) % 360}, 70%, 50%)`;
+        colores[indice];
 
     document.documentElement.style.setProperty(
         "--color-caso",
         color
     );
-
 }
 
 function capturarPlantillaOriginal() {
