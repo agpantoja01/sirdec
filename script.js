@@ -206,8 +206,9 @@ window.abrirCaso = async function () {
         });
 
     document.getElementById("casoActivo").textContent =
-    "Caso: " + numeroCaso;
-    document.title = "SIRDEC - " + numeroCaso;
+    "Caso: " + id;
+document.title =
+    "SIRDEC - " + id;
 };
 
 window.eliminarCaso = async function () {
