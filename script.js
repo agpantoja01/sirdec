@@ -219,6 +219,7 @@ window.abrirCaso = async function () {
         return;
 
     casoActual = id;
+    aplicarColorCaso(id);
 
     const datos =
         documento.data().contenido;
