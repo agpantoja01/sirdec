@@ -243,3 +243,70 @@ window.onload = async () => {
     await cargarListaCasos();
 
 };
+
+window.exportarPDF = function () {
+
+    const contenido =
+        document.body;
+
+    html2pdf()
+        .set({
+            margin: 10,
+            filename:
+                (casoActual || "caso")
+                + ".pdf",
+            html2canvas: {
+                scale: 2
+            },
+            jsPDF: {
+                unit: "mm",
+                format: "a4",
+                orientation: "portrait"
+            }
+        })
+        .from(contenido)
+        .save();
+
+};
+
+
+window.exportarWord = function () {
+
+    let contenido = `
+        <html>
+        <head>
+            <meta charset="utf-8">
+        </head>
+        <body>
+    `;
+
+    document
+        .querySelectorAll(".editable")
+        .forEach(div => {
+
+            contenido +=
+                `<p>${div.innerHTML}</p>`;
+
+        });
+
+    contenido += `
+        </body>
+        </html>
+    `;
+
+    const blob =
+        new Blob(
+            [contenido],
+            {
+                type:
+                "application/msword"
+            }
+        );
+
+    saveAs(
+        blob,
+        (casoActual || "caso")
+        + ".doc"
+    );
+
+};
