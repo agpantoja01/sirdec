@@ -98,6 +98,11 @@ window.nuevoCaso = function () {
     if (!numeroCaso) return;
 
     casoActual = numeroCaso;
+    document.getElementById("casoActivo").textContent =
+    "Caso: " + numeroCaso;
+
+document.title =
+    "SIRDEC - " + numeroCaso;
 
     document
         .querySelectorAll(".editable")
