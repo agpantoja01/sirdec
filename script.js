@@ -202,12 +202,12 @@ window.abrirCaso = async function () {
 
             div.innerHTML =
                 datos[i] || "";
-   
-    document.getElementById("casoActivo").textContent =
-    "Caso: " + numeroCaso;
 
         });
 
+    document.getElementById("casoActivo").textContent =
+    "Caso: " + numeroCaso;
+    document.title = "SIRDEC - " + numeroCaso;
 };
 
 window.eliminarCaso = async function () {
