@@ -102,3 +102,7 @@ body{
 
     margin-left: 260px;
 }
+html{
+
+    scroll-behavior: smooth;
+}
