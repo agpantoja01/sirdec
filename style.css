@@ -23,12 +23,14 @@ body {
 
 .editable {
     border: 1px solid #ccc;
-    min-height: 120px;
-    line-height: 1.1;
+    min-height: 32px;
+    line-height: 1.2;
     white-space: pre-wrap;
 
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 6px;
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
 #casoActivo{
     margin-left: 20px;
