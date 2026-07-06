@@ -53,3 +53,52 @@ body {
     margin-top: 0;
     margin-bottom: 0;
 }
+#menuLateral{
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    width: 240px;
+
+    height: 100vh;
+
+    overflow-y: auto;
+
+    background: #f8f8f8;
+
+    border-right: 1px solid #ccc;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    z-index: 999;
+}
+
+#menuLateral a{
+
+    display: block;
+
+    text-decoration: none;
+
+    color: #333;
+
+    padding: 8px;
+
+    margin-bottom: 4px;
+
+    border-radius: 4px;
+}
+
+#menuLateral a:hover{
+
+    background: #e0e0e0;
+}
+
+body{
+
+    margin-left: 260px;
+}
