@@ -293,6 +293,17 @@ window.onload = async () => {
 
 };
 
+document.addEventListener("keydown", async (e) => {
+
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+
+        e.preventDefault();
+
+        await guardarCaso();
+    }
+
+});
+
 window.exportarPDF = function () {
 
     const contenido =
