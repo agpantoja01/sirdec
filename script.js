@@ -370,3 +370,13 @@ window.exportarWord = function () {
     );
 
 };
+window.irAHallazgos = function () {
+
+    document
+        .getElementById("hallazgos-necropsia")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+};
