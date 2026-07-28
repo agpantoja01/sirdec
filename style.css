@@ -4,6 +4,13 @@ body{
     line-height:1.55;
     color:#2b2b2b;
     margin-left:260px;
+    transition: margin-left .25s ease;
+}
+
+body.menuCerrado{
+
+    margin-left:0;
+
 }
 
 #btnMenu{
@@ -27,10 +34,6 @@ body{
 
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
-
-#menuLateral{
-
-    transition: transform .25s ease;
 
 }
 
@@ -107,8 +110,6 @@ h3{
 
 #menuLateral{
 
-    #menuLateral{
-
     position: fixed;
 
     left: 0;
@@ -127,13 +128,13 @@ h3{
 
     border-right: 1px solid #ccc;
 
-    padding: 15px;
-
     box-sizing: border-box;
 
     z-index: 999;
-}
 
+    transition: transform .25s ease;
+
+}
 #menuLateral a{
 
     display: block;
