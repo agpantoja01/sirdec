@@ -389,4 +389,6 @@ botonMenu.addEventListener("click", () => {
 
     menu.classList.toggle("menuOculto");
 
+    document.body.classList.toggle("menuCerrado");
+
 });
