@@ -387,7 +387,7 @@ const menu = document.getElementById("menuLateral");
 
 botonMenu.addEventListener("click", () => {
 
-    menu.classList.toggle("menuOculto");
+    menu.classList.toggle("oculto");
 
     document.body.classList.toggle("menuCerrado");
 
