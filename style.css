@@ -37,11 +37,6 @@ body.menuCerrado{
 
 }
 
-.menuOculto{
-
-    transform: translateX(-100%);
-
-}
 
 h2{
     font-size:22px;
@@ -108,33 +103,37 @@ h3{
     box-shadow:0 0 0 3px rgba(33,150,243,.15);
 }
 
+
 #menuLateral{
 
     position: fixed;
-
     left: 0;
-
     top: 0;
 
     width: 240px;
-
     height: 100vh;
 
-    padding: 70px 15px 15px 15px;
+    padding: 70px 15px 15px;
 
-    overflow-y: auto;
+    background:#f8f8f8;
+    border-right:1px solid #ccc;
 
-    background: #f8f8f8;
+    box-sizing:border-box;
 
-    border-right: 1px solid #ccc;
+    overflow-y:auto;
 
-    box-sizing: border-box;
-
-    z-index: 999;
+    transform: translateX(0);
 
     transition: transform .25s ease;
 
 }
+
+#menuLateral.oculto{
+
+    transform: translateX(-240px);
+
+}
+
 #menuLateral a{
 
     display: block;
