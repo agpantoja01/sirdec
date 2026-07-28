@@ -8,8 +8,8 @@ body{
 
 #btnMenu{
     position: fixed;
-    top: 12px;
-    left: 12px;
+    top: 18px;
+    left: 18px;
 
     z-index: 2000;
 
@@ -107,6 +107,8 @@ h3{
 
 #menuLateral{
 
+    #menuLateral{
+
     position: fixed;
 
     left: 0;
@@ -116,6 +118,8 @@ h3{
     width: 240px;
 
     height: 100vh;
+
+    padding: 70px 15px 15px 15px;
 
     overflow-y: auto;
 
