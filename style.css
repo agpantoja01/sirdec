@@ -6,6 +6,40 @@ body{
     margin-left:260px;
 }
 
+#btnMenu{
+    position: fixed;
+    top: 12px;
+    left: 12px;
+
+    z-index: 2000;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: white;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+#menuLateral{
+
+    transition: transform .25s ease;
+
+}
+
+.menuOculto{
+
+    transform: translateX(-100%);
+
+}
+
 h2{
     font-size:22px;
     font-weight:600;
