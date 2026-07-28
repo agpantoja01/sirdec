@@ -4,12 +4,14 @@ body{
     line-height:1.55;
     color:#2b2b2b;
     margin-left:260px;
+    margin-right:20px;
     transition: margin-left .25s ease;
+
 }
 
 body.menuCerrado{
 
-    margin-left:0;
+    margin-left:20px;
 
 }
 
